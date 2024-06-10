@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.blogging.entities.Post;
 import com.blogging.payloads.ApiResponse;
 import com.blogging.payloads.PostDto;
+import com.blogging.payloads.PostResponse;
 import com.blogging.services.PostService;
 
 @RestController
@@ -67,12 +68,12 @@ public class PostController {
 	}
 	
 	@GetMapping("/posts")
-	public ResponseEntity<List<PostDto>> getAllPosts(@RequestParam(value= "pageNumber",defaultValue = "2",required = false)Integer pageNumber,
-	                                                 @RequestParam(value= "pageSize",defaultValue = "5",required = false)Integer pageSize){
+	public ResponseEntity<PostResponse> getAllPosts(@RequestParam(value= "pageNumber",defaultValue = "0",required = false)Integer pageNumber,
+	                                                 @RequestParam(value= "pageSize",defaultValue = "10",required = false)Integer pageSize){
 		
-		List<PostDto> allPost = this.postService.getAllPost(pageNumber,pageSize);
+		 PostResponse postResponse = this.postService.getAllPost(pageNumber,pageSize);
 		
-		return new ResponseEntity<List<PostDto>>(allPost,HttpStatus.OK);
+		return new ResponseEntity<PostResponse>(postResponse,HttpStatus.OK);
 	}
 	@DeleteMapping("/post/{postId}")
 	public ResponseEntity<ApiResponse> deletePosts(@PathVariable Integer postId){
