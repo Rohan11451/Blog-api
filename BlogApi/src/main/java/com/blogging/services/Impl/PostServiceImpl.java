@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.blogging.entities.Category;
@@ -76,10 +77,16 @@ public class PostServiceImpl implements PostService {
 
 
 	@Override
-	public PostResponse getAllPost(Integer pageNumber, Integer pageSize) {
+	public PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy,String sortDir) {
 		
+		Sort sort = null;
+		if(sortDir.equalsIgnoreCase("asc")) {
+			sort = Sort.by(sortBy).ascending();
+		}else {
+			sort = sort.by(sortBy).descending();
+		}
 	
-		 Pageable p = PageRequest.of(pageNumber, pageSize);
+		 Pageable p = PageRequest.of(pageNumber, pageSize, sort);
 		
 		  Page<Post> pagePosts = this.postRepo.findAll(p);
 		  List<Post> content = pagePosts.getContent();
@@ -131,9 +138,13 @@ public class PostServiceImpl implements PostService {
 
 
 	@Override
-	public List<Post> searchPosts(String keyword) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<PostDto> searchPosts(String keyword) {
+		
+//		List<Post> posts = this.postRepo.findByTitle("%"+keyword+"%");
+		List<Post> posts = this.postRepo.findByTitleContaining(keyword);
+		
+		List<PostDto> collect = posts.stream().map((post)-> this.modelMapper.map(post, PostDto.class)).collect(Collectors.toList());
+		return collect;
 	}
 
 	@Override

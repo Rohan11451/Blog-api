@@ -18,7 +18,7 @@ public interface PostService {
 	public void delete(Integer postId);
 	
 	//get All posts
-	public PostResponse getAllPost(Integer pageNumber, Integer pageSize);
+	public PostResponse getAllPost(Integer pageNumber, Integer pageSize,String sortBy,String sortDir);
 	
 	//get one posts
 	public PostDto getPostById(Integer postId);
@@ -30,7 +30,7 @@ public interface PostService {
 	public List<PostDto> getPostsByCategory(Integer categoryId);
 	
 	//search posts.
-	public List<Post> searchPosts(String keyword);
+	public List<PostDto> searchPosts(String keyword);
 	
 	
 	
