@@ -2,6 +2,5 @@
 Building real time APIs for Blogging Application using Spring Boot, Spring Data Jpa(Hibernate) and MySQL
 Creating Rest EndPoints.
 Complex DB Structure(JPA Entities)
-Role Based Authentication.
 Using DTO for DataTransfer.
 Handling Exceptions.
