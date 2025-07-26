@@ -1,10 +1,10 @@
 # [Blog-Api]
 
-A back-end  website built with HTML, CSS, and Tailwind CSS.
+A back-end CRUD Operation using core Java,springboot, Hibernate,mysql.
 
 ## Features
 
-- CRUD Operation for blog posts, comments and categories.
+- CRUD Operation for blog posts, comments, and categories.
 - Database Integration mysql.
 - Rest full Api.
 - Validation and Exception Handling
@@ -12,9 +12,11 @@ A back-end  website built with HTML, CSS, and Tailwind CSS.
 
 ## Technologies Used
 
-- core java
+- core Java
 - Spring Boot 
 - Hibernate (Jpa)
 - Maven
 - Mysql
 - PostMan
+- deepseek (AI)
+  
