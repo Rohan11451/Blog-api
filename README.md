@@ -19,4 +19,10 @@ A back-end CRUD Operation using core Java,springboot, Hibernate,mysql.
 - Mysql
 - PostMan
 - deepseek (AI)
+
+## Tools
+- STS
+- PostMan
+- git and github
+  
   
